@@ -1,1 +1,0 @@
-../../notes/devops/kubernetes_microservice.md
