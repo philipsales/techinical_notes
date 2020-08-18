@@ -1,0 +1,18 @@
+# - file: README
+- file: docs/index
+#- chapter: Sample
+  #sections:
+    #- file: docs/about_py
+    #- file: docs/getting_started
+    #- file: docs/python_by_example
+    #- file: docs/learn_more
+- part: DevOps Notes
+  sections:
+    - file: docs/docker
+    - file: docs/kubernetes_developer
+    - file: docs/kubernetes_microservice
+
+- part: Machine Learning Notes
+  sections:
+    - file: docs/machine_learning
+    - file: docs/machine_yearning

@@ -1,0 +1,1 @@
+../../notes/devops/kubernetes_developer.md
