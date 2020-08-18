@@ -68,6 +68,7 @@ Categrozied as:
     
 #### Cost Function Intution I 
 - Linear Hypothesis Formula: 
+
 \begin{align*}
 hθ(x) = θ₀ +  θ₁x
 \end{align*}

@@ -1,1 +1,1 @@
-../../notes/machine_learning/machine_learning.md
+../../notes/coursera-machine-learning/machine_learning.md

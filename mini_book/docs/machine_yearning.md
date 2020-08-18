@@ -1,1 +1,1 @@
-../../notes/machine_learning/machine_yearning.md
+../../notes/coursera-machine-learning/machine_yearning.md
