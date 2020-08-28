@@ -692,12 +692,15 @@ Cost(ℎθ(𝑥),y) = -log(1-ℎθ(𝑥))​​if​y=0
 1. Underfitting
     - "high bias"
         - term `bias` is historical
-    - very strong preconception/bias to fit a straight line
+        - inabilty of machine learning method (e.g linear regression) to capture the true relationship
+        - very strong preconception/bias to fit a straight line (i.e. linear regression) ()i.e. linear regression
 1. Overfitting 
     - "high variance"
         - term `variance` is historical
     - it can fit almost any function and this face of possible hypothesis is just too large, it's too variable.  
     - fails to generalize to new examples
+    - inconsistent and variable in prediction because the line fits changes variable for every dataset
+    - difference in fits between training and test sets 
     
 ### Problem of Overfitting
 - Causes
@@ -799,6 +802,7 @@ J(θ) = \frac{1}{2m} [\sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)² + \lambda \
     - non-linearity g(z)
 - `θ`(theta parameters)
     - `weights`
+    - `coefficient`
 - 1st Layer
     - `input layer`
 - 2nd or more that is not final Layer
@@ -811,7 +815,7 @@ J(θ) = \frac{1}{2m} [\sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)² + \lambda \
     a_i^j
     \end{align*}
     
-- matrix of weights controlling funciton mapping from layer j to layer j+1
+- matrix of controlling funciton mapping from layer j to layer j+1
     \begin{align*}
     \Theta^j
     \end{align*}
@@ -951,26 +955,282 @@ vectorized implementation:
 
 ## Week 6 - Machine Learning System Design
 
-### Deciding What to Try Next
+### Evaluating Learning Algorithm and Hypothesis 
+
 - if hypothesis makes unacceptable errors
-    1. Debugging
+1. Steps in Debugging Learning Algorithm
     1. Get more training examples
     1. Try smaller sets of featuers
     1. Try additional features
     1. Try additing polynomial features
     1. Try decreasing lambda (regularization)
+        - fixes high bias 
     1. Try increasing lambda (regularization)
+        - fixes high variance
+        
+1. Choosing networks 
+    1. Small neural netowrk
+        - few parameters
+        - prone to underfitting
+        - computationally cheaper
+    1. Large neural netowrk
+        - more parameters
+        - more hidden layers
+        - prone to overfitting` 
+            - use regularization
+        - computationally expensive 
     
-### Evaluating Learning Algorithm and Hypothesis 
 
 
 ### Machine Learning Diagnostics
 - can take time to implement but cost effective
 - a diagnostic can sometimes rule out certain courses of action (changes to your learning algorithm) as being unlikely to improve its performance significantly.
     
-
+ 
 ### Model Selection and Train/Validation/Test Sets 
-1. Model Selection
-    - what degree of polynomial to select
+1. Steps Model Selection Problem
+    1. divide the training sets into
+        - 60% as training set
+        - 20% as validation set
+        - 20% as test set
+    1. compute the error for each data set
+        - training set error
+            \begin{align*}
+             J_{train}(\Theta) = \frac{1}{2m} \sum_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2
+            \end{align*}
+        - validation set error
+            \begin{align*}
+             J_{cv}(\Theta) = \frac{1}{2m_{cv}} \sum_{i=1}^{m_{cv}} (h_{\theta}(x_{cv}^{(i)}) - y_{cv}^{(i)})^2
+            \end{align*}
+        - test set error
+            \begin{align*}
+             J_{test}(\Theta) = \frac{1}{2m_{test}} \sum_{i=1}^{m_{test}} (h_{\theta}(x_{test}^{(i)}) - y_{test}^{(i)})^2
+            \end{align*}
+    1. use the data in `validation set` to select the model
+        1. substitute all parameters with each polynomial order
+        1. select polynomial order with lowest error
+    1. use the model and use in the test set
+- `note`: cross validation set will generally have lower error than the test set because of model fitting
+
+
+### Bias vs Variance
+1. High Bias
+    - `underfit`
+    - 𝐽𝑡𝑟𝑎𝑖𝑛(𝜃) is high
+    - 𝐽𝑐𝑣(𝜃) ≈ to 𝐽𝑡𝑟𝑎𝑖𝑛(𝜃)
+1. High Variance
+    - `overfit`
+    - 𝐽𝑡𝑟𝑎𝑖𝑛(𝜃) will be low
+    - 𝐽𝑐𝑣(𝜃) greater than 𝐽𝑡𝑟𝑎𝑖𝑛(𝜃) 
+    
+### Bias vs Variance - Regularization
+1. Choosing the regularization parameter labmda
+    1. initialize lambda values by iteration
+        - e.g
+            - Try 𝜆 = 0
+            - Try 𝜆 = 0.01
+            - Try 𝜆 = 0.02
+            - ..
+            - ..
+            - Try 𝜆 = 10
+    1. Iterate through the λs and for each λ go through all the models to learn some Θ.
+    1. Test the hypothesis using the `validation set`
+    1. Compute the cross validation error using the 𝐽𝑐𝑣(Θ) without regularization or λ = 0
+    1. Select the best combo that produces the lowest error on the cross validation set 
+    1. Use the lambda value and apply it on 𝐽𝑡𝑒𝑠𝑡(Θ) on `test set` 
+
+- High Bias (`underfit`)
+    - if large  labmda value
+        - large value would make the theta (parameters) close to zero value, thus making ℎΘ(𝑥) = 𝜃₀
+- High Variance (`overfit`)
+        - if small labmda value
+    
+### Learning Curves
+- Experiencing high bias
+    1. *Low training set size*: 
+        - causes 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) to be lower and 𝐽𝑐𝑣(Θ) to be high
+    1. *Large training set size*: 
+        - causes both 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) and 𝐽𝑐𝑣(Θ) to be high
+        - 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) ≈ 𝐽𝑐𝑣(Θ) 
+    - `note`: small training set size means also small training error
+    - `note`: if learning algorithm is suffering from high bias, getting more data will not by itself help much
+    - `note`: small training set will not generalized well
+    
+- Experiencing high variance 
+    1. *Low training set size*: 
+        - causes 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) to be low and 𝐽𝑐𝑣(Θ) to be high
+    1. *Large training set size*: 
+        - 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) increases with training set size and 𝐽𝑐𝑣(Θ) continues to decrease without leveling off. 
+        - 𝐽𝑡𝑟𝑎𝑖𝑛(Θ) < 𝐽𝑐𝑣(Θ) but the difference between them remains significant 
+    - `note`: if learning algorithm is suffering from high variance, getting more data is likely to help 
     
 
+### Prioritization of Work
+
+#### e.g Building a spam classifier
+- supervised learning
+    - x = features of email
+        - i.e feature vector
+        - e.g list of words indicative of spam/not spam
+            - e.g. deal, buy, discount
+    - y = spam(1) or not spam(0)
+- how to spend time make it have low error
+    - collect lots of data
+    - develop sophisticated features based on email routing information
+        - from email header
+- develop sophisticated features from message body
+- develop sophisticated algorithm to detect misspelling
+
+
+### Error Analysis
+#### Recommended approach for building Machine Learning 
+1. Start with simple algorithm
+    - spend 1 day and test on cross-validation data
+1. Plot learning curves to decide if more data more features, etc will help
+    - to avoid premature optimization
+1. Error analysis
+    - manually examining the samples (in `cross validation set`) that algorithm made errors on.
+    - creatre classification of errors and tally 
+    - see if systematic patterns are amking errors on
+1. Compare against the chosen Numerical Evaluation/Metric
+
+### Error Metrics for Skewed Data/Classes
+#### Evaluation Metrics: Precision/Recall for Skewed Classes
+1. Precision
+    - e.g. of the shoes classified as Nike, how many are actually Nike?
+    - e.g. predict cancer only when confident
+    \begin{align*}
+    \frac{true ​ positives}{number ​ of ​ predicted ​ positive}
+    \end{align*}
+
+    \begin{align*}
+    \frac{True ​ positive}{True ​ positive ​ + ​ False ​ positive}
+    \end{align*}
+1. Recall 
+    - e.g of the shoes that are actually Nike, how many were classified as Nike?
+    - e.g. when in doubt patient have cancer, conclude with cancer
+    \begin{align*}
+    \frac{true ​ positives}{number ​ of ​ actual ​ positive}
+    \end{align*}
+
+    \begin{align*}
+    \frac{True ​ positive}{True ​ positive ​ + ​ False ​ negative}
+    \end{align*}
+
+1. F Score
+    - Formula 1
+    \begin{align*}
+    F_\beta = \frac{1}{\beta x \frac{1}{Precision} + (1-\beta)x\frac{1}{Recall} }
+    \end{align*}
+        - 𝛽 is threshold value
+    
+    - Formula 2
+    \begin{align*}
+    F_1 Score = 2\frac{PR}{P + R}
+    \end{align*}
+    
+#### Evaluation Metrics: Trade Off Precision/Recall 
+- e.g. Logistic Regression for Cancer prediction
+    - Suppose we want to predict cancer, only if very confident (assure true positives)
+        - higher precision, lower recall
+    - Supopose we want to avoid missing too many cases of cancer (avoid false negatives)
+        - lower precision, higher recall
+        
+#### Large Datasets 
+1. Large data Rationale
+    - useful if the task is easy for human-level accuracy
+    - if learning algorithm have many parameters (low bias algorithm)
+        - e.g neural network with many hidden layer, logistic/linear regression
+        
+## Week 7 - Support Vector Machines
+- doesn't output a probability
+- `very sensitive to outliers`
+- also known as `Large Margin Classifier`
+    - consequence of optimization 
+- just makes a prediction if y = 0 or 1
+- 1-dimension data (i.e. x-axis) is transformed by kernel to draw  data into 2 or higher dimension to find the `support vector classifier`
+
+- Kernel Functions ( `Similiary functions`)
+    - systematicaly finds Support Vector Classifiers
+    1. Linear Kernel
+        - no kernel
+    1. Gaussian Kernel 
+        - most common
+        - do perform feature scaling before using this kernel
+    1. Radial Kernel
+    1. Polynomial Kernel
+- Terminologies
+    1. Support Vector Margin
+    1. Kernel Trick
+    1. Soft margin
+
+### SVM Cost Function
+\begin{align*}
+\frac{min}{\theta}C \sum_{i=1}^m[y^{(i)}cost_1(\theta^T x^{(i)})] + (1-y^{(i)}) cost_0 (\theta^T xT^{(i)})] + \frac{1}{2} \sum_{i=1}^n \theta_j^2
+\end{align*}
+
+### SVM parameters 
+1. Lambda
+\begin{align*}
+C(=\frac{1}{\lambda})
+\end{align*}
+    - Large C
+        - lower bias, high variance
+    - Small C
+        - higher bias, low variance
+2. Sigmoid squared
+\begin{align*}
+\sigma^2
+\end{align*}
+    - Large Sigmoid: 
+        - features f vary more smoothly
+        - higher bias, lower variance
+    - Small Sigmoid: 
+        - features f vary less smoothly
+        - lower bias, higher variance
+        
+### SVM in Practice
+- Implementation Tips
+    1. Specify parameter C
+    1. Specify choice of Kernel (similarity function)
+        - e.g. No kernel, Gaussian Kernel, etc.
+        
+## Week 2 - Unsupervised Learning - Introduction
+- given an unlabeled dataset and are asked to find "structure" in the data
+- the training set is of the form 
+    \begin{align*}
+    \{x^{(1)},x^{(2)},\dots,x^{(m)}\} 
+    \end{align*}
+    without labels 
+    \begin{align*}
+    y^{(i)}
+    \end{align*}
+
+### K-Means Algorithmn
+- most popular Clustering
+- iterative algorithm and does 2 things
+    1. cluster assignment step
+    1. move centroid step
+        - inner loop step
+        
+- Formula:
+    - Input
+        - K (number of clusters)
+            \begin{align*}
+            \mu_1, \mu_2, ...., \mu_K ∈ ℝ^n  
+            \end{align*}
+        - Traiing set
+            \begin{align*}
+            \{x^{(1)},x^{(2)},\dots,x^{(m)}\} 
+            \end{align*}
+            \begin{align*}
+            x^{(i)} ∈ ℝ^n  
+            \end{align*}
+       
+- Steps
+    1. Randomly initialized K cluster centroids 
+    1. Assign each data point to one of the K centroid (Cluster Assignment Step)
+    1. Move the centroids to new posiiton based on the average/mean of the location of each points (Move Centroid Step)
+    1. Re-assigne each data point to one of the 2 centroid
+    1. Repeat step 3-5
+    
