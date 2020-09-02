@@ -49,7 +49,7 @@ Categrozied as:
 - h = hypothesis, maps from x's to y's
 - h(x) = represents hypothesis
 
-### Cost Function 
+### Cost Function / Optimization Objective 
 - a type of `Loss Function`
 - also called `Squared error function`
 - in statistics `Sum of squares of residuals`
@@ -71,7 +71,7 @@ Categrozied as:
     - parameters: θᵢ's `thetas`
     - problem: how to choose θᵢ's 
     
-#### Cost Function Intution I 
+#### Cost Function / Optimization Objective Intution I 
 - Hypothesis Formula for single feature (Linear Regression): 
 
 \begin{align*}
@@ -81,7 +81,7 @@ hθ(x) = θ₀ +  θ₁x
 \begin{align*}
 θ₀,θ₁
 \end{align*}
-- Cost Function formula: 
+- Cost Function / Optimization Objective formula: 
 \begin{align*}
 J(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
 \end{align*}
@@ -92,7 +92,7 @@ minimize ​ J(θ₀,θ₁)
 \end{align*}
 
 ### Gradient Descent 
-    - algo use to minimize the cost functions and other functions
+    - algo use to minimize the Cost Function / Optimization Objectives and other functions
 
 - Gradient Descent Formula:
 \begin{align*}
@@ -152,12 +152,12 @@ j =0,1
 ### Gradient Descent For Linear Regression 
 - Gradient susceptible to local optima but not in linear regression
     - `note`: Linear regression has no local optima, only global optima 
-- Cost function for linear regression is always to 
+- Cost Function / Optimization Objective for linear regression is always to 
     - `Convex function` - also called `Bowl shaped function`
         - doesn't have local optima or any other optima
 - usually paremeters is initialized in (0,0) for (θ₀,θ₁)
 
-- Cost Function Formula: 
+- Cost Function / Optimization Objective Formula: 
 \begin{align*}
 J(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
 \end{align*}
@@ -259,7 +259,7 @@ J(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
 θ 
 \end{align*}
 
-- Cost Function Formula: 
+- Cost Function / Optimization Objective Formula: 
 \begin{align*}
 J(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)
 \end{align*}
@@ -295,7 +295,7 @@ J(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)
     1. Feature scaling 
         - xᵢ (input) / sᵢ (range)
     1. Mean normalization
-        - xᵢ (input) - μᵢ (average of all values for feature (i)) / sᵢ (range)
+        - xᵢ (input) - μᵢ (average of all values for feature (i)) / sᵢ (min-max or range or standard deviation)
         
 ### Gradient Descent - Learning Rate
 - if α is too small: slow convergence.
@@ -594,8 +594,8 @@ odds = \frac{p}{1-p}
 
 
 ## Week 2 - Logistic Regression 
-### Cost Function
-- Logistic Cost Function
+### Cost Function / Optimization Objective
+- Logistic Cost Function / Optimization Objective
 \begin{align*}
 J(\theta) = \frac{1}{m} \sum_{i=1}^m Cost(h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)
 \end{align*}
@@ -608,24 +608,24 @@ Cost(ℎθ(𝑥),y) = -log(ℎθ(𝑥))​​if​y=1
 Cost(ℎθ(𝑥),y) = -log(1-ℎθ(𝑥))​​if​y=0
 \end{align*}
 
-- Logistic Cost Function conditions
+- Logistic Cost Function / Optimization Objective conditions
     - `Cost(hθ(x),y)=0 if hθ(x) = y`
     - `Cost(hθ(x),y)→∞ if y=0 and hθ(x)→1`
     - `Cost(hθ(x),y)→∞ if y=1 and hθ(x)→0`
     
-- Simplified Logistic Regression Cost Function 
+- Simplified Logistic Regression Cost Function / Optimization Objective 
 
     Original formula:
     \begin{align*}
     J(\theta) = \frac{1}{m} \sum_{i=1}^m Cost(h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)
     \end{align*}
     
-    Converted Cost Function
+    Converted Cost Function / Optimization Objective
     \begin{align*}
     Cost(hθ(x),y) = -y*log(hθ(x)) - (1-y)log(1-hθ(x))
     \end{align*}
 
-    Conditional Cost Function
+    Conditional Cost Function / Optimization Objective
     \begin{align*}
     if​​y=1: Cost(hθ(x),y) = -log(hθ(x))
     \end{align*}
@@ -729,8 +729,8 @@ Cost(ℎθ(𝑥),y) = -log(1-ℎθ(𝑥))​​if​y=0
 \begin{align*}
 min(θ) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)² + 1,000,000  ​​ 𝜃₃² + 1,000,000  ​​ 𝜃₄²
 \end{align*}
-### Regularization - Cost Function 
-- Regularized Cost Function Formula: 
+### Regularization - Cost Function / Optimization Objective 
+- Regularized Cost Function / Optimization Objective Formula: 
 
 \begin{align*}
 J(θ) = \frac{1}{2m} [\sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)² + \lambda \sum_{j=1}^n \theta_j^2]
@@ -783,8 +783,8 @@ J(θ) = \frac{1}{2m} [\sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)² + \lambda \
     \end{align*}
     
     
-#### Regularization - Cost Function
-- Regularized Cost Function for Logistic Regression:
+#### Regularization - Cost Function / Optimization Objective
+- Regularized Cost Function / Optimization Objective for Logistic Regression:
 
     \begin{align*}
     J(\theta) = - \frac{1}{m}[\sum_{i=1}^m  y⁽ⁱ⁾logh₀(x⁽ⁱ⁾) + (1-y⁽ⁱ⁾)log(1-h₀(x⁽ⁱ⁾)) ] ​ + \frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2
@@ -878,8 +878,8 @@ K
 L
 \end{align*}
 
-#### Regularization - Cost Function
-- Regularized Cost Function for Neural Network:
+#### Regularization - Cost Function / Optimization Objective
+- Regularized Cost Function / Optimization Objective for Neural Network:
 
 \begin{align*}
 J(\Theta) = - \frac{1}{m} [\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)} log(h_\Theta(x^{(i)}))_k + (1-y_k^{(i)})log(1-h_\Theta(x^{(i)}))_k) ] ​ + \frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_l + 1} (\Theta_{ji}^{(l)})^2
@@ -887,12 +887,12 @@ J(\Theta) = - \frac{1}{m} [\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)} log(h_\Theta(x^{(
         
 
 - Gradient Descent for Neural Network:
-    - algorithmn on finding the minimal the cost function
+    - algorithmn on finding the minimal the Cost Function / Optimization Objective
     
 #### Gradient Descent: Back Propagation Algorithm
-- returning the error rate (cost function value) to back to the first layer, in order for the
+- returning the error rate (Cost Function / Optimization Objective value) to back to the first layer, in order for the
 first layer to change the original weight value with respect to the returned error rate
-- "Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression.
+- "Backpropagation" is neural-network terminology for minimizing our Cost Function / Optimization Objective, just like what we were doing with gradient descent in logistic and linear regression.
 
 - Inutition: delta = "error of activation function" or "error of cost" of node j in layer l
 - For each output unit (layer L=4)
@@ -941,7 +941,7 @@ vectorized implementation:
             - neural units for hidden layer is usually 2-3x the number of input units
 1. Randomly initialize weights
 1. Implement forward propagation to get `ℎΘ(𝑥⁽ⁱ⁾` for any 𝑥⁽ⁱ⁾
-1. Implement code to compute cost function 𝐽(θ)
+1. Implement code to compute Cost Function / Optimization Objective 𝐽(θ)
 1. Implement backward propagation to compute partial derivates
 
     \begin{align*}
@@ -1164,7 +1164,7 @@ vectorized implementation:
     1. Kernel Trick
     1. Soft margin
 
-### SVM Cost Function
+### SVM Cost Function / Optimization Objective
 \begin{align*}
 \frac{min}{\theta}C \sum_{i=1}^m[y^{(i)}cost_1(\theta^T x^{(i)})] + (1-y^{(i)}) cost_0 (\theta^T xT^{(i)})] + \frac{1}{2} \sum_{i=1}^n \theta_j^2
 \end{align*}
@@ -1206,20 +1206,32 @@ C(=\frac{1}{\lambda})
     y^{(i)}
     \end{align*}
 
-### K-Means Algorithmn
+### K-Means Algorithm
 - most popular Clustering
 - iterative algorithm and does 2 things
     1. cluster assignment step
     1. move centroid step
         - inner loop step
         
-- Formula:
+- Notations:
     - Input
-        - K (number of clusters)
+        - index cluster (1,2,...K) to which example 𝑥⁽ⁱ⁾ is currently assigned
+            \begin{align*}
+            c^{(i)}
+            \end{align*}
+        - index cluster (1,2,...K) to which example 𝑥⁽ⁱ⁾ has been assigned
+            \begin{align*}
+            \mu_c^{(i)}
+            \end{align*}
+        - K - total number of clusters
             \begin{align*}
             \mu_1, \mu_2, ...., \mu_K ∈ ℝ^n  
             \end{align*}
-        - Traiing set
+        - k - specific cluster centroid
+            \begin{align*}
+            \mu_k, \mu_k ∈ ℝ^n  
+            \end{align*}
+        - Training set
             \begin{align*}
             \{x^{(1)},x^{(2)},\dots,x^{(m)}\} 
             \end{align*}
@@ -1234,3 +1246,362 @@ C(=\frac{1}{\lambda})
     1. Re-assigne each data point to one of the 2 centroid
     1. Repeat step 3-5
     
+- Algorithm 
+    - Repeat 
+        {
+            for i = 1 to m 
+                𝑥⁽ⁱ⁾ := index (from 1 to K) of cluster centroid closest to 𝑥⁽ⁱ⁾
+            for k = 1 to K 
+                𝜇𝑘 := average (mean) of points assigned to cluster k
+        }
+
+### K-Means Cost Function / Optimization Objective
+- Optimizaiton Function (Distortion Function)
+\begin{align*}
+min_{c^{(1)},...,c^{(m)}} J (c^{(1)}, ..., c^{(m)},\mu_1,...,\mu-K) = \frac{1}{m}\sum_{i=1}^m ||x^{(i)} - \mu_c(i)||^2
+\end{align*}
+
+### K-Means Initialization
+- Steps
+    1. Should have K < m
+    1. Pick k distinct random integers i {1,...,m} from training examples
+    1. Set 𝜇1,𝜇2,....,𝜇𝐾 equal to these K examples
+    
+- Algorithm 
+    ```
+    For i = 1 to 1000 {
+            Randomly initialize K-means
+            Run K-means
+                Get J(𝑐(1),...,𝑐(𝑚),𝜇1,...,𝜇−𝐾)
+            Compute the Cost Function / Optimization Objective(distortion)
+                J(𝑐(1),...,𝑐(𝑚),𝜇1,...,𝜇−𝐾)
+    }
+    
+    Pick clustering that gave lowest Cost J(𝑐(1),...,𝑐(𝑚),𝜇1,...,𝜇−𝐾)
+    ```
+    
+### K-Means Cluster 
+- Techniques of choosing the right value of K
+    1. Elbow Method
+        - Distortion (Cost Function / Optimization Objective) goes down as more clusters are created
+        - the `elbow` or joint point will be the suggested number of cluster
+        - wil not always work
+    1. Metric based
+    
+## Week 7 - Dimensionality Reduction
+- practical application
+    1. Data compression
+        - Reduce memory/disk needed to store data
+        - Speed up learning algorithm
+            - still retains percentage of variance of original data 
+    1. Data Visualization 
+- use if the plotting dimensions is impossible to graph
+    - e.g. x-axis + y-axis + z-axis + n-axis
+- Types of Dimensionlity Reduction
+    1. Feature Selection
+        - Neural Network
+    1. Feature Extraction
+        - Principal Component Analysis (PCA)
+        - Heatmaps
+        - t-SNE Plots (Supervised)
+        - Multi-Dimensional Scaling
+        
+### Principal Component Analysis 
+- Goal
+    - find a vector onto which to project the data as to minimize projection error
+    
+- Techniques 
+    1. Data processing
+        - Feature Scaling/mean normalization
+            - if different features on different scales, scale features to have comparable range of values
+            
+- Choosing k (number of principal components)
+    - "99% of variance is retained"
+    
+- Bad Application of PCA
+    - to prevent overfitting
+        - PCA throws away some information (e.g excludes the y value)
+        
+- Best Practice of Application of PCA
+    - try doing implementation without PCA first using the original uncompressed data
+    
+- Notation
+\begin{align*}
+ x ∈ ℝ^n ->  z ∈ ℝ^k   
+\end{align*}
+
+## Week 8 - Anomaly Detection
+### Motivation
+- Unsupervised Learning
+- most practical application
+    1. Fraud detection
+        - detects behavior/features of user
+            - x1 = how often login 
+            - x2 = typing speed
+            - x3 = number of transactions 
+    1. Manufacturing
+    1. Monitoring Computers in Data Center
+    
+### Gaussian Distribution 
+- also known as `normal distribution curve`
+
+- Mean
+\begin{align*}
+\mu = \frac{1}{m} \sum_{i=1}^m x^{(i)}
+\end{align*}
+
+- Variance
+\begin{align*}
+\sigma^2 = \frac{1}{m} \sum_{i=1}^m (x^{(i)} - \mu)^2
+\end{align*}
+
+- Density computation
+\begin{align*}
+p(x) = \prod_{j=1}^n p(x_j;\mu_j; \sigma_j^2) = \frac{1}{\sqrt{(2 \pi \sigma)}} exp( - \frac{(x-\mu)^2}{2\sigma^2})
+\end{align*}
+
+### Anomaly Detection Algorithm
+- Steps
+    1. have a way of evaluatimg algorithm
+        1. Fit model p(x) on training set
+        \begin{align*}
+            {x^{(i)},...,x^{(m)}}
+        \end{align*}
+        1. On a cross validation/test exmple x, predict
+        \begin{align*}
+          y = \left\{ \frac10 \right.
+        \end{align*}
+        \begin{align*}
+            if p(x) < \epsilon  ​ (anomaly)
+        \end{align*}
+        \begin{align*}
+            if p(x) \geq \epsilon ​ (normal)
+        \end{align*}
+        1. Possible evaluation metrics
+            - F1 - Score
+            - Precision/Recal
+            - True positive, false positive, false negative, true negative
+            - Classification accuracy
+                - should not be use
+                - skewed because y=0 is always higher
+        1. Can also use cross validation set to choose parameter epsilon (𝜖) 
+    1. have some labeled data of anomalous and non-anomalous
+    1. choose or create a features that might usually take on `unusually large or small` values in the event of an anomaly 
+    1. Try to come up with more featuers to distinguish between normal and anomalous examples
+    1. train in Training set 
+    1. train in Cross Validation set
+    1. train in Test set
+- Data Set distribution (60-20-20 distribution)
+    - Training Set: 6000 good (y=0)
+    - CV set: 2000 good (y=0), 10 anomalous (y=1)
+    - Testset: 2000 good (y=0), 10 anomalous (y=1)
+- Density Estimation Formula
+    - Training set: 
+        \begin{align*}
+        {x^{(i)},...,x^{(m)}}
+        \end{align*}
+    - Each example is  
+        \begin{align*}
+         x ∈ ℝ^n   
+        \end{align*}
+    - Formula 
+        \begin{align*}
+        p(x) = \prod_{j=1}^n p(x_j;\mu_j; \sigma_j^2)
+        \end{align*}
+    - `Anomaly if p(x) < 𝜖`
+    
+### Anomaly Detection Problems
+
+| Anomaly Detection (Unsupervised)   | Logistic Regression (Supervised)   |
+|---|---|
+| Very small positive (y=1) e.g 0-20 | Large number of positive examples  |
+| Large number of negative (y=0)     | Large number of negative examples  |
+| Many different types of anomalies. Hard for algorithm to learn what new anomalies look like   | Enough examples  to get sense of what positive and negative are |
+| future anomalies may look nothing like the existing anomalous examples | future postives are likely to be similar with exisitng dataset |
+| Fraud detection | Email Spam Classification |
+| Manufacturing   | Weather Prediction (sunny/rainy) |
+| Data Center Monitoring |  Cancer Classification |
+
+### Anomaly Detection Features 
+#### Non-Gaussian features
+- Steps
+    1. plot the histogram data
+        - non bell curved distribution
+    1. Plot as `log(x)` transform  or different transformation constants
+    
+#### Error Analysis
+- steps similar with logistic regression
+- Most common problem 
+    - p(x) is comparable for normal and anomalous example
+  
+### Anomaly Detecting using Multivariate Guassian Distriubtion 
+- can also be used to model correlation of variables
+- elipses or contours are always axis aligned
+
+- Formula
+    \begin{align*}
+    p(x;\mu;\Sigma) = \frac{1}{ (2\pi)^{\frac{n}{2}} | \Sigma |^{\frac{1}{2} }  }
+    exp( - \frac{1}{2} (x-\mu)^T \Sigma^{-1}  (x-\mu)
+    \end{align*}
+    
+    
+### Guassian Distriubtion Comparison
+ | Original Model   | Multivariate Gaussian   |
+|---|---|
+|  𝑝(𝑥𝑗;𝜇𝑗;𝜎2𝑗)  | 𝑝(𝑥;𝜇;Σ) | 
+| manually combine and creates features to capture anomalies| automatically captures correlation between features |
+| computationally cheaper | computationally more expensive |
+| scale better to large n | scales lesser |
+| Ok even if m is small   | Must have m > n, or else sigma is non-invertible |
+
+## Week 8 - Recommender System 
+
+### Notations
+- number of rater (e.g number of users) 
+    \begin{align*}
+    n_u
+    \end{align*}
+- number of features (e.g romance, action) 
+    \begin{align*}
+    n
+    \end{align*}
+- number of samples (e.g number of movies)
+    \begin{align*}
+    n_m
+    \end{align*}
+- rated (e.g if movie `i` was rated by user `j`)
+    \begin{align*}
+    r(i,j) = 1
+    \end{align*}
+- ratings score 
+    \begin{align*}
+    y^{(i,j)}
+    \end{align*}
+- parameter vector for user `j` 
+    \begin{align*}
+    \theta^{(j)}
+    \end{align*}
+- feature vector for movie`i` 
+    \begin{align*}
+    x^{(i)}
+    \end{align*}
+- Formula
+    \begin{align*}
+    (\theta^{(j)})^T (x^{(i)})
+    \end{align*}
+    
+- Cost Function / Optimization Objective 
+    \begin{align*}
+    min \theta = \frac{1}{2} \sum_{j=1}^{n_u} \sum_{i:r(i,j) = 1} ( (\theta^{(j)})^T x^{(i)} - y^{(i,j)}  )^2 
+    + \frac{\lambda}{2}  
+    \sum_{j=1}^{n_u} \sum_{k=1}^n (x_k^{(j)})^2
+    \end{align*}
+    
+- Gradient Descent Update Rule
+    \begin{align*}
+    x_k^{(i)} := x_k^{(i)} - \alpha ( \sum_{j:r(i,j) = 1} ( (\theta^{(j)})^T ) ( x^{(i)} ) - y ^{(i,j)} ) \theta_k^{(j)} + \lambda x_k^{(i)} )
+    \end{align*}
+    
+### Collaborative Filtering Algorithm
+- essentially used predict the score of a movie based on the scores of other users
+- Steps
+    1. Initialize to small random values
+    1. Minimize using gradient descent
+    1. For a user with paremters theta and a movie with (learned) feature x, predict star rating of 𝜃𝑇𝑥(𝑖)
+    
+### Vectorization: Low Rank Matrix Factorization
+- essentially used to recommend a new movie to a user
+
+## Week 10 - Learning with Large Dataset
+- Steps
+    1. Sanity Check by iterating multiple and small dataset
+        - plot the learning curve
+            - because some algorithm does not improve by just adding data
+            
+### Methods for Scaling Datasets
+1. ### Stocahstic Gradient Descent 
+    - useful when there are a lot of redundancies in the data
+    - modification for Gradient Descent for large data
+    - doesn't really converge on global minimum - but fine enough
+    
+    - Recall Gradient Descent for Linear Regression
+        - Hypothesis 
+        \begin{align*}
+        h_0(x) = \sum_{j=0}^n \theta_j x_j
+        \end{align*}
+        - Cost function 
+        \begin{align*}
+        j(θ₀,θ₁) = \frac{1}{2m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
+        \end{align*}
+
+        - Gradient Descent Formula
+        \begin{align*}
+        \theta_j:=\theta_j-\alpha \frac{∂}{∂\theta_j} j(\theta_0, \theta_1)​ 
+        \end{align*}
+
+        - thus, derive the Batch Gradient Descent Update Formula: 
+            - repeat until converge {
+                \begin{align*}
+                \theta_0:=\theta_0-\alpha \frac{1}{m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)
+                \end{align*}
+                \begin{align*}
+                \theta_1:=\theta_1-\alpha \frac{1}{m} \sum_{i=1}^m (h₀(x⁽ⁱ⁾) - y⁽ⁱ⁾)x⁽ⁱ⁾
+                \end{align*}
+            } simultaneously update (θ₀,θ₁) 
+
+
+1. ### Mini-batch Gradient Descent 
+- Batch Gradient Descent: uses all `m` examples in each iteration
+- Stochastic Gradient Descent: uses 1 example in each iteration
+- Mini-batch Gradient Descent: uses `batch` (i.e 2-100 examples) in each iteration
+    - better than stochastic if vectorized
+    - uses parallelism
+    - Say b = 10, m = 1000
+    - Repeat {
+        - for i = 1, 11, 21, 31, ..., 991 
+        \begin{align*}
+        \theta_j := \theta_j - \alpha \frac{1}{10} \sum_{k=i}^{i+9} ( h_{\theta} ( x^{(k)}) - y^{(k)} ) x_j^{(k)}
+        \end{align*}
+    } (for every j = 0, ..., n)
+
+    
+## Week 10 - Advance Topics
+### Online Learning
+- learn from the flood of users
+- to learn from continuous stream of data
+
+### Map Reduce and Data Parallelism
+- Map Reduce: distributing the datasets across different machines
+- Parallism: Computes the algorithm at the same time on different or same machine
+    - learning algorithm must be express as computing sums of funcitons over the training set
+    
+## Week 11 - Photo OCR
+
+### OCR Pipeline
+- Steps
+    1. Text detection
+    1. Character segmentation
+    1. Character classification  - Terminology
+    - Sliding Window
+        - Step size/stride
+        
+### Getting More Data Guidelines
+1. Plot learning Curve first
+1. "How much work would it be to get 10x as much data"
+    - artificial data synthesis
+    - collect/label it yourself
+        - compute man hours
+    - crowd source (e.g Amazon Mechanical Turk)
+        - crowd source data labelling
+        
+### Ceiling Analysis
+- estimating errors due to each component
+- allocation of resources in choosing components in the pipeline to improve
+- having a single number for evaluation metric for each component
+    - e.g
+       | Component              | Accuracy | Difference |
+       | ---                    | ---      | ---        |
+       | Overall                | 72%      | 0          |
+       | Text Detection         | 89%      | 17%        |
+       | Character Segmentation | 90%      | 1%         |
+       | Character Recognition  | 100%     | 10%        |
