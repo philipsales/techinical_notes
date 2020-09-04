@@ -96,7 +96,7 @@ kernelspec:
             \end{align*}
             
 1. Gradient Descent for Logistic Regression
-- use to train or learn the parameters
+- optimization algorithms like Gradient Descent are used to train your model and to minimize the cost.
     - #### Derivative
         - is just the slope of the function at a point 
         - the slope of a curve line varies relative to the point or location 
