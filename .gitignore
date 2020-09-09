@@ -4,3 +4,9 @@ mini_book/_build/*
 __pycache__/
 .~
 .github/*
+
+notes/*/*/*/*/nih
+notes/*/*/*/*/nih/*
+notes/*/*/*/*/nih.*
+notes/*/*/*/*/BraTS-Data.*
+notes/*/*/*/*/BraTS-Data/*

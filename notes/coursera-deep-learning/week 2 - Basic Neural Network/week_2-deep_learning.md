@@ -47,7 +47,7 @@ kernelspec:
         \end{align*}
         - Parameter 
         \begin{align*}
-        x ∈ ℝ^{n_x}  , b ∈ ℝ 
+        x & \in \mathbb{R}^{n_x}  \\ b & \in \mathbb{R} 
         \end{align*}
         - Output 
         \begin{align*}
@@ -255,14 +255,14 @@ kernelspec:
             for i = 1 to m:
     ```
     \begin{align*}
-    z^{(i)} & = w^Tx^{(i)} = b \\
-    a^{(i)} & = \sigma (z^{(i)}) \\
-    J & += - [ y^{(i)} log \hat{y}^{i} + (1-y^{(i)}) log (1-\hat{y}^{(i)})] \\
-    dz^{(i)} & = a^{(i)}  - y^{(i)} \\
-    dw_1 & += x_1^{(i)} dz^{(i)} \\
-    dw_2 & += x_2^{(i)} dz^{(i)} \\
-    db & += dz^{(i)} \\
-    J & = J/m, dw_1 = dw_1/m, dw_2 = dw_2/m, db = db/m
+    z^{(i)} = & w^Tx^{(i)} = b \\
+    a^{(i)} = & \sigma (z^{(i)}) \\
+    J  += & - [ y^{(i)} log \hat{y}^{i} + (1-y^{(i)}) log (1-\hat{y}^{(i)})] \\
+    dz^{(i)} = & a^{(i)}  - y^{(i)} \\
+    dw_1 +=& x_1^{(i)} dz^{(i)} \\
+    dw_2 += & x_2^{(i)} dz^{(i)} \\
+    db  += &  dz^{(i)} \\
+    J = & J/m, dw_1 = dw_1/m, dw_2 = dw_2/m, db = db/m
     \end{align*}
     
     1. #### Vectorized Logistic Regression 
@@ -292,9 +292,9 @@ kernelspec:
                 \end{align*}
                 \begin{matrix}
                 X  = \begin{bmatrix} 
-                    . & . & . & . \\
-                    x^{(1)} & x^{(2)} & . & x^{(m)} \\
-                    . & . & . & .\\
+                    \cdots & \cdots & \cdots & \cdots \\
+                    x^{(1)} & x^{(2)} & \cdots & x^{(m)} \\
+                    \cdots & \cdots & \cdots & \cdots \\
                     \end{bmatrix}
                 \end{matrix}
                 - `w tranpose` is a row vector 

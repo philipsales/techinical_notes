@@ -8,9 +8,9 @@ kernelspec:
   language: python
   name: python3
 ---
-(deep_learning)=
+(ai_in_medicine)=
 
-# Deep Learning #
+# AI for Medical Diagnosis #
 
 ## Week 1 - Medical Image Classification
 ### I. How to handle small and imbalance dataset
@@ -45,10 +45,10 @@ kernelspec:
 
 #### Problem: Binary Cross Entropy Loss
 - `measures the performance of a classification model whose output is between 0 and 1`
-- the loss difference of the formula below
+- Regular Loss Function 
 
 \begin{align}
-    \left\{ 
+    L(X,y) = \left\{ 
         \begin{matrix}
             -log P (Y=1|X) & if & y = 1 \\
             -log P (Y=0|X) & if & y = 0 \\
@@ -82,16 +82,25 @@ kernelspec:
             
 #### Solution 1: Weighted Loss 
 - add weight relative to sample label or class
-- Formula: Binary Cross-Entropy Loss 
+- Formula: Weighted Loss Function 
 \begin{align}
-    \left\{ 
+    L(X,y) &= \left\{ 
         \begin{matrix}
             w_{p} &x& -log P (Y=1|X) & if & y = 1 \\
-            w_{n} &x& -log P (Y=0|X) & if & y = 0 \\
+            w_{n} &x& -log P (Y=0|X) & if & y = 0 \\ \\
         \end{matrix} 
-    \right\}
+    \right\} 
 \end{align}
 
+\begin{align}
+    L_{pos} &= w_{p} \times -log P (Y=1|X) \\ 
+    L_{neg} &= w_{n} \times -log P (Y=0|X) \\ \\
+    L^{(i)} &= loss_{pos}^{(i)} + los_{neg}^{(i)} \\
+    L_{pos}^{(i)} &= -1 \times weight_{pos}^{(i)} \times y^{(i)} \times log(\hat{y}^{(i)}) \\
+    L_{neg}^{(i)} &= -1 \times weight_{neg}^{(i)} \times (1- y^{(i)}) \times log(1 - \hat{y}^{(i)})
+\end{align}
+
+    where
 \begin{align}
 w_p = \frac{num ​​ negative}{num ​​ total}
 \end{align}
@@ -102,12 +111,12 @@ w_n = \frac{num ​​ positive}{num ​​ total}
 
 #### Solution 2: Resampling
 - to achieve equal number of normal and non-normal examples
-- Formula: Binary Cross-Entropy Loss 
+- Formula: Regular Loss Function
 \begin{align}
-    \left\{ 
+    L(X,y) = \left\{ 
         \begin{matrix}
-            L & = -log P (Y=1|X) & if & y = 1 \\
-            L & = -log P (Y=0|X) & if & y = 0 \\
+             -log P (Y=1|X) & if & y = 1 \\
+             -log P (Y=0|X) & if & y = 0 \\
         \end{matrix} 
     \right\}
 \end{align}
