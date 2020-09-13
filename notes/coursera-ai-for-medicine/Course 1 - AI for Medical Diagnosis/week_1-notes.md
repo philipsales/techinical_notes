@@ -181,7 +181,7 @@ w_n = \frac{num ​​ positive}{num ​​ total}
 - Architectures of Convolutional Neural Networks
     1. Inception-v3
     1. ResNet-34
-    1. DenseNet
+    1. DenseNet - https://arxiv.org/pdf/1608.06993.pdf
     1. ResNeXt 
     1. EfficientNet 
     

@@ -92,7 +92,7 @@ def get_curve(gt, pred, target_names, curve='roc'):
             auc_roc = roc_auc_score(gt[:, i], pred[:, i])
             label = target_names[i] + " AUC: %.3f " % auc_roc
             xlabel = "False positive rate"
-            ylabel = "True positive rate"
+            ylabel = "True positive rate (Sensitivity)"
             a, b, _ = curve_function(gt[:, i], pred[:, i])
             plt.figure(1, figsize=(7, 7))
             plt.plot([0, 1], [0, 1], 'k--')
