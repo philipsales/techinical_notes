@@ -13,9 +13,8 @@ kernelspec:
 # AI for Medical Diagnosis #
 
 ## Week 1 - Medical Image Classification
-### I. How to handle small and imbalance dataset
 
-#### Resources
+### Resources
 - Public Chest Xray 
     - dataset - https://nihcc.app.box.com/v/ChestXray-NIHCC
     - article - https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community
@@ -266,7 +265,7 @@ w_n = \frac{num ​​ positive}{num ​​ total}
     
 ## Week 2 - Key Evaluation Metrics 
 
-#### Resources
+### Resources
 - ROC visualizer 
     - link -  http://www.navan.name/roc/
     - paper - https://people.inf.elte.hu/kiss/13dwhdm/roc.pdf
@@ -495,6 +494,8 @@ w_n = \frac{num ​​ positive}{num ​​ total}
          - `accuracy` is arbitrary, any evaluation metrics may be used
          
 ## Week 3 - Image Segmentation on MRI
+
+### Resources
 
 - 3D Brain MRI 
     - paper - https://arxiv.org/pdf/1902.09063.pdf

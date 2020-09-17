@@ -13,6 +13,15 @@ kernelspec:
 # AI for Medical Prognosis #
 
 ## Week 1 - Linear Prognostic Models
+
+### Resources
+- Chads-Vasc Risk Score
+    - link - https://journal.chestnet.org/article/S0012-3692(10)60067-0/fulltext
+- MELD's Score
+    - link - https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.21563
+- ASCVD + 
+    - link - https://www.ahajournals.org/doi/full/10.1161/01.cir.0000437738.63853.7a
+
 ### Prognosis Overview 
 - Use Cases:
     1. predicting future events
@@ -61,8 +70,39 @@ kernelspec:
     - may not always be linear (i.e. natural log)
     
 ### Evaluation of Prognostic Model
-1. Permissible Pair
-    - a pair where outcomes are  different
+
+#### 1. C-Index 
+- Overview
+    - measures how good the prognostic models
+    - `does not` allow censored observation
+    
+- Formula
+    \begin{align}
+        C-index = \frac{\#(concordant\ pairs) + 0.5 \times \#(risk\ ties)}{\#(permissible\ pairs)} 
+    \end{align}
+    
+- Constant 
+    - +1.0 for a permissible pair that is concordant
+    - +0.5 for a permissible pair for risk tie
+    
+- Properties
+    - Random model score would score = 0.5
+    - Perfect model score would score = 1.0
+    
+- Interpretation 
+
+    \begin{align}
+     P(score(A) > score(B) | Y_A > Y_B) 
+    \end{align}
+    
+    `interpretation`: What is the probability that patient with worst outcome (i.e. Patient A) gets the higher risk score (i.e. score(A))
+
+    
+    
+- Data Categories    
+
+    1. Permissible Pair
+        - a pair where outcomes are  different
     
     | | Patient A | Patient B |
     | --- | --- | --- |
@@ -100,26 +140,6 @@ kernelspec:
         | Risk Score           | 0.94 | 0.65 |
     
     
-#### C-Index 
-- Notation
-    - plus 1.0 for a permissible pair that is concordant
-    - plus 0.5 for a permissible pair for risk tie
-    
-- Formula
-    \begin{align}
-        C-index = \frac{\#(concordant\ pairs) + 0.5 \times \#(risk\ ties)}{\#(permissible\ pairs)} 
-    \end{align}
-    
-- Interpretation 
-
-    $ P(score(A) > score(B) | Y_A > Y_B) $
-    
-    `interpretation`: What is the probability that patient with worst outcome (i.e. Patient A) gets the higher risk score (i.e. score(A))
-
-    - Random model score would score = 0.5
-    - Perfect model score would score = 1.0
-    
-    
 - Example
 
     | Patient | Events | Risk |
@@ -132,8 +152,10 @@ kernelspec:
     
     - Permissible pairs
         - (A,B), (A,E), (B,C), (B,D), (C,E), (D,E)
+        
     - Concordant pairs
         - (A,B), (A,E), (B,C), (B,D)
+        
     - Risk Ties
         - (C,E)
         

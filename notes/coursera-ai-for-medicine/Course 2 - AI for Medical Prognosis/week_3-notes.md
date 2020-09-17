@@ -14,13 +14,24 @@ kernelspec:
 
 ## Week 3 - Survival Models and Time
 
-### Survival Models
-- Known Models
+### Resources
+
+- Survival Analysis Library (Lifeline)
+    - link - https://lifelines.readthedocs.io/en/latest/
+    - paper - http://www.medicine.mcgill.ca/epidemiology/hanley/c634/lifetables/abm_17.PDF
+    
+
+- Dataset 
+    - link - https://www.statsdirect.com/help/content/survival_analysis/logrank.htm
+    
+### Survival and Hazard Models 
+- known models
     1. Kaplan Meier
     1. Cox 
     1. Multiple Cox
+    1. Nelson-Aelen estimator 
 
-#### 1. Kaplan Meier Estimate 
+#### 1. Kaplan Meier Estimate  - Survival Estimator
 - Overview
     - estimates from population
     - takes censored information into account
@@ -107,7 +118,7 @@ kernelspec:
         S(25) =& (1-Pr(T=25|T \ge 25))(1-Pr(T=24|T \ge 24)) \ldots (1-Pr(T=0|T \ge 0))
     \end{align}
     
-    since the only T less than 25 are 20, and 10, simply into
+    since the only T less than 25 are t=[10,20] (death that occured before T=25) and 10
     
     \begin{align}
         S(25) & = (1-Pr(T=20|T \ge 20))(1-Pr(T=10|T \ge 10)) 
@@ -124,7 +135,8 @@ kernelspec:
           S(25) & = 0.56
     \end{align}
     
-    `note`: if data is censored or with '+', do not equate as `T = exact value` (i.e. **+20** $ \ne $ 20)
+    `note`: **censored data** or data with '+', do not equate to `death` 
+     (i.e. **+20** $ \ne $ died at 20)
         
 - Survival Data
     - types of data

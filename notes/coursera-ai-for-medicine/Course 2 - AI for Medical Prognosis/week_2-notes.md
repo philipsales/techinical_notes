@@ -14,14 +14,62 @@ kernelspec:
 
 ## Week 2 - Prognosis with Tree-based Models
 
-### Models
+### Resources
 
+- Dataset
+    - reference - https://wwwn.cdc.gov/nchs/nhanes/nhefs/
+    - link - https://wwwn.cdc.gov/nchs/nhanes/nhanes1/
+- Shap Library
+    - link - https://github.com/slundberg/shap
+    - notebook - https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html
+
+### Models
+        
 #### 1. Decision Trees
-- incredibly useful mainly for the following reasons
-    - can handle `continuous` and `categorical` data
-    - interpretability
-    - speed to train model
-- can model non-linear relationships/association
+- Overview
+    - can model non-linear relationships/association
+    - incredibly useful mainly for the following reasons
+        - can handle `continuous` and `categorical` data
+        - interpretability
+        - speed to train model
+    
+- Practical Application
+    1.  `Short Term Mortality for Hospital Patients`
+        - variables
+            - 10 year mortality risk
+            - using Age and Systolic Blood Pressure
+        
+- Decision boundary
+    - dividing input spaces into regions using vertical and horizontal boundaries
+        ![image info](../images/decision-tree-graph.png)
+
+        ![image info](../images/decision-tree-region.png)
+
+    - a tree with `if-then` structure
+        ![image info](../images/decision-tree-chart.png)
+            
+- Building Decision Tree
+    - High-Level Steps
+        1. Pick a variable/value that partitions the data
+            - determines how well the data are divided
+        1. Continue the partition for vertical and horizontal
+        1. For each partitions, estimate the risk
+            - e.g fraction of patients that are dead
+        1. Binarized the output
+            - e.g High Risk/Low Risk 
+
+    - Fixing Overfitting
+        - Control or setting the `Max Depth`
+            - stop growing the decision trees
+        - Build Random Forest
+            - average the risk predictions of multiple decision tree
+            - boost the performance of single decision tree
+
+    - Random Forest Training
+        - each tree is constructed using random samples 
+            - same with `Bootstrapping` or sampling with replacement 
+            - modifies the splitting procedures
+                - each sampling may use only a `subset` of features (i.e. Age, BP, Sex) 
 
 #### 2. Random Forests
 - classifier algorithm
@@ -33,44 +81,7 @@ kernelspec:
         1. Gradient Boosting
         1. XGBoost
         1. LightGBM
-
-#### Application
-1.  `Short Term Mortality for Hospital Patients`
-    - variables
-        - 10 year mortality risk
-        - using Age and Systolic Blood Pressure
-    - decision boundary
-        - dividing input spaces into regions using vertical and horizontal boundaries
-            ![image info](../images/decision-tree-graph.png)
-            
-            ![image info](../images/decision-tree-region.png)
         
-        - a tree with `if-then` structure
-            ![image info](../images/decision-tree-chart.png)
-            
-#### Building Decision Tree
-- High-Level Steps
-    1. Pick a variable/value that partitions the data
-        - determines how well the data are divided
-    1. Continue the partition for vertical and horizontal
-    1. For each partitions, estimate the risk
-        - e.g fraction of patients that are dead
-    1. Binarized the output
-        - e.g High Risk/Low Risk 
-        
-- Fixing Overfitting
-    - Control or setting the `Max Depth`
-        - stop growing the decision trees
-    - Build Random Forest
-        - average the risk predictions of multiple decision tree
-        - boost the performance of single decision tree
-    
-- Random Forest Training
-    - each tree is constructed using random samples 
-        - same with `Bootstrapping` or sampling with replacement 
-        - modifies the splitting procedures
-            - each sampling may use only a `subset` of features (i.e. Age, BP, Sex) 
-
 ### Key Challenges in Healthcare Data
 1. Missing Data
 
