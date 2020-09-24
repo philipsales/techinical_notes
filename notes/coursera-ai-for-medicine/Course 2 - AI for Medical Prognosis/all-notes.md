@@ -212,6 +212,7 @@ kernelspec:
     - Fixing Overfitting
         - Control or setting the `Max Depth`
             - stop growing the decision trees
+            > Finding a model that minimizes and acceptably balances underfitting and overfitting (e.g. selecting the model with a `max_depth` of `2` over the other values) is a common problem in machine learning that is known as the _bias-variance tradeoff_
         - Build Random Forest
             - average the risk predictions of multiple decision tree
             - boost the performance of single decision tree

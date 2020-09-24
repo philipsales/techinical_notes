@@ -31,9 +31,11 @@ def load_data(threshold):
     feature_y = 'Systolic BP'
     frac = 0.7
 
-    drop_rows = X_dev.sample(frac=frac, replace=False,
-                             weights=[prob_drop(X_dev.loc[i, 'Age']) for i in
-                                      X_dev.index], random_state=10)
+    drop_rows = X_dev.sample(frac=frac, 
+                             replace=False,
+                             weights=[prob_drop(X_dev.loc[i, 'Age']) for i in X_dev.index], 
+                             random_state=10)
+    
     drop_rows.loc[:, feature_y] = None
     drop_y = y_dev[drop_rows.index]
     X_dev.loc[drop_rows.index, feature_y] = None

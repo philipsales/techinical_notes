@@ -21,19 +21,49 @@ kernelspec:
     - Dataset
         - [NHANES dataset](https://wwwn.cdc.gov/nchs/nhanes/nhanes1/])
         - [NHANES reference](https://wwwn.cdc.gov/nchs/nhanes/nhefs/)
+    - Library
+        - [SHAP for Tree Ensembles](https://arxiv.org/pdf/1802.03888.pdf)
          
 - Steps
     1. Load Data
-    1. Explore Data Analysis (EDA)
+        1. Split whole set into Dev and Test (80/20) sets
+            1. Split the Dev set into Training and Validation (75/25) sets
+    1. Explore Data Analysis (EDA) for the Training set
         - For Data Analysis
+            1. Explore Data
+                1. Headers
+                1. Shape and data types
             1. Assess if for Missing Data
-                1. Case Analysis
-                1. Imputation
-    1. Build the Decision Tree Model using train data
-    1. Evaluate the model using 
-    1. Evaluate the model using the Test Sets 
-    1. Improve the Model 
-    1. Explain the predictions using `Shap`
+                - Plot heatmap of `training` and `validation` data using all headers
+                    - if Few: Proceed
+                    - if Many:
+                        1. Compute the fraction of missing data
+                        1. Perform Complete Case Analysis
+                            1. Drop Method
+                                - drop the data with missing values for **training and validation** data
+    1. Build the Decision Tree Model using the `dropped` **train and validation** data
+    1. Evaluate the model using `C-Index`
+        - if Not Overfitting: Proceed
+        - if Overfitting:
+            - Perform Hypertuning parameters
+    1. Build the Random Forest Model using the `dropped` **train and validation** data
+        1. Implement Forest Grid Search
+    1. Evaluate the Random Forest Model using `C-Index` on **test** data
+    1. Evaluate the Performance of Model
+        1. Assess if Dropping for Missing Data was the cause
+            - Plot distribution for `full` (i.e with and without missing data) and `without` missing data for training set using all headers
+                1. Classify the type of Missing Data Category 
+                1. Perform Error Analysis
+                    1. find the population with c-index below the result in Step 6.
+                    1. Perform different methods of Imputation for missing values
+                        1. Implement Mean Subsititution on **train** data
+                            1. Repeat Step 5.A - Forest Grid Search using `mean_imputed` **train, validation, test** data
+                        1. Implement Multivariate Feature Imputation on **train** data
+                            1. Repeat Step 5.A - Forest Grid Search using `feature_imputed` **train, validation, test** data
+                    1. Compare the result of the different Imputation Approaches
+                        - `dropped` vs `mean_imputed` vs `feature_imputed` data
+    1. Explain the Results of Predictions
+        1. Perform `SHAP Values`
 
 ## Building Linear Risk Models
 - Practical Application
@@ -46,6 +76,7 @@ kernelspec:
     
 - Steps
     1. Load Data
+        1. Split Train and Test
     1. Explore Data Analysis (EDA)
         - For Data Analysis
             1. Assess if for Normal Distribution
@@ -57,7 +88,7 @@ kernelspec:
                             - Mean-Normalization
                                 - Get mean and standard deviation of train data, and use the traning mean and sd to transform the test data
     1. Build the Logistic Regression Model using train data
-    1. Evaluate the model using C-index metric
+    1. Evaluate the model using `C-index` 
         - Evaluation of Medical `Prognostic` Models
             - C-index 
     1. Evaluate the model using the Test Sets 
@@ -72,6 +103,7 @@ kernelspec:
 ## Boilerplate Steps
 - Steps
     1. Load Data
+        1. Split Train and Test
     1. Explore Data Analysis (EDA)
         - For Image Analysis
             1. Check Data Types
